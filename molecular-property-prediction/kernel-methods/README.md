@@ -1,13 +1,12 @@
-# Kernel-Based Molecular Machine Learning
+# 基于核的分子机器学习
 
-Kernel-based machine learning models are among the most important in molecular machine learning. 
-These notebooks introduce the theory and methods behind them.
+基于核的机器学习模型在分子机器学习中占据重要地位。  
+本系列 Notebook 将介绍其背后的理论与方法。
 
-## Key Concepts
+## 核心概念
 
-Through completing these modules, you should be able to:
+完成这些模块后，你将能够：
 
-- [ ] Use both [DScribe](https://singroup.github.io/dscribe/latest/) and [QML](http://www.qmlcode.org/) to fit a kernel learning model.
-- [ ] Know which hyperparameters of KRR to tune and how
-- [ ] Understand the benefits of scalable kernels and the limitations around training set size vs computational cost.
-
+- [ ] 使用 [DScribe](https://singroup.github.io/dscribe/latest/) 和 [QML](http://www.qmlcode.org/) 拟合核学习模型。
+- [ ] 了解 KRR 需要调节哪些超参数以及如何调节。
+- [ ] 理解可扩展核的优势，以及训练集规模与计算成本之间的权衡限制。

@@ -1,13 +1,13 @@
-# Molecular Property Prediction
+# 分子性质预测
 
-Machine learning for molecular properties is an area of machine learning that has seen [massive innovation in the past decade](https://www.nature.com/articles/s41467-020-18556-9). Learning about these topics is important for their impact on materials engineering and also for understanding how knowledge of the physics underlying a problem influence the design of machine learning algorithms. 
+分子性质的机器学习是机器学习的一个分支，在过去十年中经历了[巨大的创新](https://www.nature.com/articles/s41467-020-18556-9)。学习这些内容的重要性体现在它们对材料工程的影响，以及理解问题的底层物理知识如何影响机器学习算法的设计。
 
-## Learning Objectives
+## 学习目标
 
-The major goals of this module include:
+本模块的主要目标包括：
 
-- Highlighting roots of modern molecular machine learning in chemoinformatics. *What is QSAR and when should I use it?*
-- Identifying an appropriate class of machine learning models for molecules. *When would you use graph convolution network for predicting molecular toxicity?*
-- Explaining why (nearly) all neural networks for molecular properties are "message passing neural networks." *What sets MEGNet and Gilmer's MPNN apart?*
-- Describing the key features, major methods and disadvantages of kernel-based machine learning. *What are the key features of FCHL?*
-- Presenting history of machine learning for molecules. *How are SchNet and DTNN related?*
+- 指出现代分子机器学习在化学信息学中的根源。*什么是 QSAR？我应该在什么时候使用它？*
+- 为分子选择合适的机器学习模型类别。*在预测分子毒性时，何时应使用图卷积网络？*
+- 解释为何（几乎）所有用于分子性质的神经网络都是“消息传递神经网络”。*MEGNet 与 Gilmer 的 MPNN 有何不同？*
+- 描述基于核的机器学习的关键特征、主要方法及其缺点。*FCHL 的关键特征是什么？*
+- 介绍分子机器学习的发展历史。*SchNet 与 DTNN 之间有何关联？*

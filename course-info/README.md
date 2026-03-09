@@ -1,3 +1,3 @@
-# Course Information
+# 课程信息
 
-This folder contains various documentation about the course.  
+此文件夹包含有关课程的各种文档。

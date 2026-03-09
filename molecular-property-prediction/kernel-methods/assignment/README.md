@@ -1,10 +1,10 @@
-# Kernel Method Assignment
+# 核方法作业
 
-The goal of this assignment is to evaluate your ability to fit Kernel ridge regression models on chemical data.
+本作业旨在评估你在化学数据上拟合核岭回归模型的能力。
 
-- [ ] Manipulate Pandas dataframes of chemical data
-- [ ] Convert molecular structures from string to ASE format
-- [ ] Compare model performance using cross-validation tests
-- [ ] Optimize model hyperparameters
+- [ ] 操作化学数据的 Pandas 数据框
+- [ ] 将分子结构从字符串转换为 ASE 格式
+- [ ] 使用交叉验证测试比较模型性能
+- [ ] 优化模型超参数
 
-As you complete this assignment, you will learn how to bypass some issues of kernel ridge regression and a little about global optimization algorithms.
+完成作业的过程中，你将学习如何规避核岭回归的一些常见问题，并初步了解全局优化算法。

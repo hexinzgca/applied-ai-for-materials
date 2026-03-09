@@ -1,29 +1,15 @@
-# Machine Learning for Inorganic Materials
+# 无机材料的机器学习
 
-Inorganic materials are often complicated. Materials can be composed of many chemical elements and form complex structures from the electronic up to the visible scales. Accordingly, there are a rich set of tools for building machine learning models that capture the subtleties of composition and structure. Here, we describe how to use them.
+无机材料往往十分复杂。材料可由多种化学元素组成，并在从电子尺度到可见光尺度上形成复杂结构。因此，我们拥有一整套丰富的工具来构建机器学习模型，以捕捉成分与结构的细微差别。本节将介绍如何使用这些工具。
 
-## Learning Objectives
+## 学习目标
 
-The major goals of this module include:
+本模块的主要目标包括：
 
-- Compute feature based on composition and crystal structure using matminer. _What are featurizers and how do I use them to build an ML model?_
-- Recognizing groups of similar materials within a dataset. _How do I perform clustering?_
-- Incorporating or ignoring processing conditions or structural data from a dataset. _How can I include processing conditions into a model? Why would I knowingly ignore factors that effect material's behavior?_
+- 使用 matminer 基于成分与晶体结构计算特征。_什么是特征化器（featurizers）？如何利用它们构建 ML 模型？_
+- 在数据集中识别相似材料的分组。_如何进行聚类？_
+- 在模型中引入或忽略加工条件或结构数据。_如何将加工条件纳入模型？为何会有意忽略影响材料性能的因素？_
 
-## Installation
+## 安装
 
-Build the environment with Anaconda using
-
-```bash
-conda env create --file environment.yml --force
-```
-
-Then activate with
-
-```bash
-conda activate matml
-```
-
-## Contributing
-
-I am not an expert in learning from the microstructure of materials but believe we need a module on that. If you know how to work with microstructural data, please reach out!
+使用 Anaconda 构建环境：

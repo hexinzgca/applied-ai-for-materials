@@ -1,71 +1,27 @@
-# Applied AI for Materials
+# 材料应用人工智能
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/WardLT/applied-ai-for-materials/HEAD)
 
-This repository is a collection of notebooks and other materials used for the "Applied Artificial Intelligence for Materials Science and Engineering" course at The University of Chicago. It is very much a work in progress, so expect large changes in content and organization in the next few months.
+本仓库汇集了芝加哥大学“材料科学与工程应用人工智能”课程所使用的 Jupyter 笔记本及其他教学资料。目前仍在持续更新中，未来数月内容与结构可能发生较大变动，敬请期待。
 
-## Using this Repository
+## 如何使用本仓库
 
-Each subject area is organized into its own directory with notebooks, lecture notes and Python environment. They will generally be arranged as having multiple subfolders that focus on a specific subtopic. 
+每个主题领域均独立成目录，内含笔记本、讲义及 Python 环境配置。各目录通常再细分为若干子文件夹，聚焦特定子主题。
 
-### Working from Binder
+### 通过 Binder 在线运行
 
-You can run all of the notebooks using [Binder](https://jupyter.org/binder). 
-Simply click [this link](https://mybinder.org/v2/gh/WardLT/applied-ai-for-materials/HEAD) to launch a copy of the repository on cloud resources. 
-**It will not save your changes**, but you can use it for exploring the notebooks and - if you download notebooks to your computer - completing the practical assignments.
+您可通过 [Binder](https://jupyter.org/binder) 在线运行所有笔记本。  
+只需点击[此链接](https://mybinder.org/v2/gh/WardLT/applied-ai-for-materials/HEAD)即可在云端启动一份仓库副本。  
+**注意：Binder 不会保存您的修改**，但您可用其浏览笔记本，或下载到本地完成实践作业。
 
-### Local Installation
+### 本地安装
 
-Either download the repository as a ZIP file or [clone it using git](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository). 
+您可下载仓库 ZIP 包，也可通过 [git 克隆](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)。  
 
-If you install using git, you can update the course materials through calling `git pull` from within the directory. 
-Otherwise, you will need to re-download the repository to receive updates.
+若使用 git 克隆，可在目录内执行 `git pull` 更新课程资料；  
+否则需重新下载仓库以获取更新。
 
-Installing the environment is easiest if you are running Ubuntu Linux.
-First install the build toolsneeded to compile Fortran and C++ packages used by some packages, which are listed listed in [apt.txt](./apt.txt).
+若您使用 Ubuntu Linux，环境安装最为便捷。  
+首先安装编译某些包所需的 Fortran 与 C++ 构建工具，具体列表见 [apt.txt](./apt.txt)。  
 
-Then, use [mamba](https://mamba.readthedocs.io/en/latest/) to build the Python environment:
-
-```
-conda install -c conda-forge mamba
-mamba env create --file environment.yml --force
-```
-
-See [**further instructions**](./envs/README.md) for a step-by-step for Ubuntu and other operating systems.
-
-## Course Layout
-
-The course is broken out in to the following modules (some of which are TBD):
-
-- Effectively using Python for data science: Working quickly and reproducibly with Anaconda and Jupyter 
-  - Topics: Managing Python environments PyData Stack, Jupyter Notebooks
-- The Materials Data Ecosystem: Infrastructure for finding, using and sharing data
-  - Topics: Databases, laboratory information systems, image publication
-- [Molecular property prediction](./molecular-property-prediction): How physics, chemistry and machine learning fit together
-  - Topics: Kernel and graph methods, chemoinformatics
-- [Supervised learning for inorganics](./ml-for-inorganic-materials): The importance of microstructure, composition and processing 
-  - Topics: Representations for inorganic materials, coping with processing variation
-- Generative methods for materials: Augmenting human creativity with AI
-  - Topics: Generative Adversarial Networks, Reinforcement Learning, Autoencoders
-- [Bayesian parameter estimation](./bayesian-statistics): Achieving greater certainty in using physics-based models
-  - Topics: UQ for CALPHAD, model selection, learning from noisy data
-- Computer vision and characterization: Better microscopy through intelligent software
-  - Topics: Image segmentation, classification and noise reduction
-- [Optimal experimental design](./optimal-experimental-design): Accelerate design optimization with software-assisted planning
-  - Topics: Bayesian Optimization, active learning
-
-### Module Layout
-
-Each course module contains its own instruction notebooks and assignments for evaluating comprehension.
-
-The answer keys for the comprehension assignments are encrypted and can be decrypted with the [provided script](./bin/). Message me to get the passphrase or notebooks.
-
-Some modules are broken into a few different subdirectories with their own notebooks and assignments.
-
-## Related Resources
-
-Further resources available for this course are available elsewhere:
-
-- [Syllabus](https://1drv.ms/b/s!AswJEkleh18Ah5pEQM8zCT0uVf6Stg?e=B0ZGJU): Most recent syllabus for the associated course.
-- [Slides](https://1drv.ms/u/s!AswJEkleh18Ah49dGc89htZMDm65cw?e=3GMRig): My working copy of the slides, available in PDF and PPTX format from OneDrive.
-- [Lecture Recordings](https://www.youtube.com/watch?v=6ofUaBAIF0U&list=PLEjVJ0F11Nmn8Rc0OblMtzFfOGI1rAeIf): From Winter 21 are on [YouTube](https://www.youtube.com/watch?v=6ofUaBAIF0U&list=PLEjVJ0F11Nmn8Rc0OblMtzFfOGI1rAeIf)
+接着使用 [mamba](https://mamba.readthedocs.io/en/latest/) 创建 Python 环境：

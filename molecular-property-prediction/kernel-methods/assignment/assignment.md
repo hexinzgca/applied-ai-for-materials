@@ -1,159 +1,36 @@
-# Assignment: Fitting with a reduced set of features
+# 作业：使用精简特征集进行拟合
 
-[Browning et al.](http://pubs.acs.org/doi/10.1021/acs.jpclett.7b00038) have illustrated how you can get better Kernel Ridge Regression models by intelligently selecting which points from a large dataset to use for training.
-We are going to recreate their work in this assignment by making an improved model for the Highest Occupied Molecular Orbital (HOMO) energy using only 100 training points.
+[Browning 等人](http://pubs.acs.org/doi/10.1021/acs.jpclett.7b00038) 展示了如何通过智能地选择大数据集中的训练点来获得更好的核岭回归模型。  
+在本作业中，我们将仅使用 100 个训练点，重建他们的工作，以改进对最高占据分子轨道（HOMO）能量的预测模型。
 
-## Problem 1: Fitting a Coulomb Matrix
+## 问题 1：拟合库仑矩阵
 
-Load in our QM9 dataset and compute the [Coulomb matrix](https://singroup.github.io/dscribe/latest/tutorials/coulomb_matrix.html) for each entry. Set maximum number of atoms to be 40. (QM9 dataset encompasses molecules with up to nine “heavy” atoms from the range C, O, N and F. So the molecule having most atoms would simply be Nonane, C<sub>9</sub>H<sub>20</sub>.)
+加载 QM9 数据集，并为每个条目计算 [库仑矩阵](https://singroup.github.io/dscribe/latest/tutorials/coulomb_matrix.html)。将最大原子数设为 40。（QM9 数据集包含最多九个“重”原子（C、O、N、F）的分子。因此原子数最多的分子是壬烷 C<sub>9</sub>H<sub>20</sub>。）
 
-Make a test set of 1000 entries.
+构造一个包含 1000 条目的测试集。
 
-Fit a model with 100 parameters to predict the HOMO energy (`'homo'`) using [KernelRidge](https://scikit-learn.org/stable/modules/generated/sklearn.kernel_ridge.KernelRidge.html) regression with an RBF kernel. Make sure to fit the $\alpha$ and $\gamma$ parameters using [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html).
+使用 [KernelRidge](https://scikit-learn.org/stable/modules/generated/sklearn.kernel_ridge.KernelRidge.html) 回归与 RBF 核，拟合一个含 100 个参数的模型来预测 HOMO 能量（`'homo'`）。务必使用 [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) 来调优 $\alpha$ 和 $\gamma$ 参数。
 
-*HINT*: Use parameters varying between $10^{-6}$ and $10^0$ with a logarithmic spacing of 16 steps.
+*提示*：参数范围取 $10^{-6}$ 到 $10^0$，按对数间隔取 16 步。
 
-Repeat the fitting process 16 times using different samples of 100 entries. Plot three [histrograms](https://matplotlib.org/3.3.3/api/_as_gen/matplotlib.pyplot.hist.html) of the optimized $\alpha$, $\gamma$ parameters and the MAE on a separate test set, respectively.
+重复拟合过程 16 次，每次使用不同的 100 条样本。分别绘制优化后的 $\alpha$、$\gamma$ 参数以及测试集 MAE 的三个 [直方图](https://matplotlib.org/3.3.3/api/_as_gen/matplotlib.pyplot.hist.html)。
 
-- Do the optimized model parameters change with different subsets?
-- How large of a variation do you observe in the hyperparameters ($\alpha$, $\gamma$)?
-- Can we use the same set of parameters for all subsets of 100 entries?
+- 优化后的模型参数是否随子集变化？
+- 超参数（$\alpha$、$\gamma$）的变化幅度有多大？
+- 能否对所有 100 条样本的子集使用同一组参数？
 
-## Problem 2: Plot a learning curve
+## 问题 2：绘制学习曲线
 
-Fit the Coulomb Matrix model using randomly-selected training sets of 10, 100, and 1000 entries.
-Repeat the experiment 4 times with each training set size, picking a different randomly-selected set each time.
+使用随机选取的 10、100 和 1000 条训练集拟合库仑矩阵模型。  
+每种训练集大小重复实验 4 次，每次随机选取不同的集合。
 
-- Plot how the averaged model accuracy on a test set, training time and inference times change as a function of training set size.
+- 绘制测试集平均模型精度、训练时间和推理时间随训练集大小的变化曲线。
 
-## Problem 3: Optimize the training set. 
+## 问题 3：优化训练集
 
-We are going to use a genetic algorithm to determine an optimized training set with $100$ entries.
+我们将使用遗传算法确定一个含 100 条目的优化训练集。
 
-First, separate off a "validation set" of 1000 entries from the training set that we will use to assess the performance of our specially-chosen training sets.
+首先从训练集中分离出 1000 条“验证集”，用于评估我们特别挑选的训练集性能。
 
-Now, implement a function that will accept a list of points from the training set by their index and produce the score of that model on the validation set using MAE. 
-This function will be used by the genetic algorithm to score each selection of points.
-It should fulfill the following signature:
-
-```python
-def evaluate_subset(points: list, model, train_data: pd.DataFrame, test_data: pd.DataFrame) -> float:
-    """Test a subset of points
-    
-    Args:
-        points: Which points from the train_data to sample
-        model: Model to use for testing
-        train_data: All available training points
-        test_data: Data used to test the model
-    Returns:
-        MAE on the test set
-    """
-```
-
-Next, run the genetic algorithm code provided at the end of this document (also includes an explaination of GAs) and:
-
-- Plot the best score in the population change as a function of generation. *Hint*: Convert the `all_options` to a DataFrame and use Panda's [aggregation functions](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.aggregate.html).
-- Plot the performance of your optimized model (which would be a single dot in this case) with the learning curve from problem 2. How does it compare?
-
-## Appendix: Genetic Algorithm Code
-
-Here is some simple code for a genetic algorithm to use. 
-It defines methods for mixing best-performing solutions (crossover) and applying small random changes to individual members (mutation).
-
-```python
-from random import sample
-
-def mutate(points: set, total: int, fraction: float = 0.1) -> set:
-    """Mutate a set of points
-    
-    Mutates from selecting points randomly from the dataset
-    
-    Args:
-        points: Set of points to be mutated
-        total: Total number of samples to choose from in dataset
-        fraction: How many points to re-select
-    """
-    
-    # Remove the desired amount of points
-    n_to_remove = int(len(points) * fraction)
-    to_remove = sample(points, k=n_to_remove)
-    new_points = points.difference(to_remove)
-    
-    # Add more points to the set
-    available_choices = set(range(total)).difference(new_points)
-    new_points.update(sample(available_choices, n_to_remove))
-    
-    return new_points
-
-def crossover(parent_a: set, parent_b: set):
-    """Perform a crossover operation
-    
-    Randomly chooses points from both parents
-    
-    Args:
-        parent_a: One choice of points
-        parent_b: Another choice of points
-    Returns:
-        A new set that combines both parents
-    """
-    
-    # Combine all points from each parents
-    options = parent_a.union(parent_b)
-    
-    # Pick randomly from the combined set
-    return set(sample(options, len(parent_a)))
-```
-
-Genetic algorithms work by applying crossover and mutation to the best-performing entries of each generation, and repeating the process over many generations. 
-The idea is that best-performing traits ("genes") are present in the later generations.
-
-```python
-# Defining options
-n_generations = 50
-pop_size = 8
-dataset_size = 100
-
-# Array in which to store all results
-all_options = []
-
-# Make an initial population
-#  Creates sets where each have different entries pull from the full dataset
-population = np.array([set(sample(range(len(train_data)), k=100)) for i in range(pop_size)])
-
-# Loop over the generations
-for gen in tqdm(range(n_generations), desc='generation'):
-    # Score each member of the population
-    scores = [
-        evaluate_subset(list(s), gs, train_data, valid_data) for s 
-        in population
-    ]
-    
-    # Store the results in the history
-    for i, s in enumerate(population):
-        all_options.append({
-            'generation': gen,
-            'points': s,
-            'score': scores[i]
-        })
-        
-    # Sort scores and pick the best quarter
-    ranks = np.argsort(scores)
-    best_members = population[ranks[:pop_size // 4]]
-    
-    # Create new members by crossover and mutation
-    new_population = []
-    for i in range(pop_size):
-        # Pick two parents at random
-        parent_a, parent_b = sample(best_members.tolist(), 2)
-        
-        # Form a new member by crossover
-        new_member = crossover(parent_a, parent_b)
-        
-        # Mutate it for good measure
-        new_population.append(
-            mutate(new_member, total=len(train_data))
-        )
-    
-    # Replace population with new population
-    population = np.array(new_population)
-```
+接下来实现一个函数，该函数接收训练集中点的索引列表，并在验证集上返回该模型得分的 MAE。  
+此函数将被遗传算法用于为每组点打分。其签名如下：

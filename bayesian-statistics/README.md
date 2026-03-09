@@ -1,21 +1,20 @@
-# Bayesian Statistics for Physics Models
+# 物理模型的贝叶斯统计
 
-Bayesian Methods offer a statistically-robust route to assessing how confident one should be in the predictions of a machine learning model.
-Knowing how to work with Bayesian methods is a excellent when you have small amounts of data, a good sense of the model which could describe your data,
-or need for meaningful error bars on the properties.
+贝叶斯方法为评估机器学习模型预测的可信度提供了一种统计上稳健的路线。
+当你只有少量数据、对可能描述数据的模型有良好直觉，或者需要为模型属性提供有意义的误差条时，掌握贝叶斯方法尤为出色。
 
-## Learning Objectives
+## 学习目标
 
-The learning objectives for our model are:
+本模型的学习目标包括：
 
-- Learning how to define the prior and likelihood functions. *How do you include the model form in the likehood function?*
-- Understanding MCMC sampling. *What is burn-in and how do I achieve it?*
-- Comparing the evidence for different models. *What is a Bayes factor and what is a large Bayes factor?*
-- Using the posterior to estimate error bars on predictions. *Can you produce a 95% confidence interval?*
+- 学习如何定义先验分布与似然函数。*如何在似然函数中纳入模型形式？*
+- 理解 MCMC 采样。*什么是 burn-in？如何实现它？*
+- 比较不同模型的证据。*什么是贝叶斯因子？多大的贝叶斯因子才算显著？*
+- 利用后验分布估计预测的误差条。*能否给出 95% 置信区间？*
 
-## Useful Papers
+## 推荐阅读
 
-A few papers to read to gain a better understanding of this field include:
+若想深入了解该领域，可参考以下论文：
 
-- [Paulson et al. IJES (2019)](https://doi.org/10.1016/j.ijengsci.2019.05.011): Tutorial and demonstration of using Bayesian methods to predict thermoelectric properties of materials
-- [de Schoot et al. Nature Reviews (2021)](https://www.nature.com/articles/s43586-020-00001-2): Great tutorial review of methods behind Bayesian models
+- [Paulson 等，IJES (2019)](https://doi.org/10.1016/j.ijengsci.2019.05.011)：使用贝叶斯方法预测材料热电性能的教程与演示
+- [de Schoot 等，Nature Reviews (2021)](https://www.nature.com/articles/s43586-020-00001-2)：贝叶斯模型方法综述教程

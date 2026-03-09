@@ -1,13 +1,12 @@
-# Chemoinformatics
+# 化学信息学
 
-The notebooks here introduce a few key concepts in [chemoinformatics](https://pubs.acs.org/doi/10.1021/ci600234z) and 
-one of its subdiscplines, [Quantitative-Structure Activity Relationships (QSAR)](https://pubs.acs.org/doi/full/10.1021/cr200066h).
+这里的笔记本介绍了[化学信息学](https://pubs.acs.org/doi/10.1021/ci600234z)及其子学科[定量构效关系（QSAR）](https://pubs.acs.org/doi/full/10.1021/cr200066h)的一些关键概念。
 
-## Key Concepts
+## 核心概念
 
-Through completing these modules, you should be able to:
+完成这些模块后，你应该能够：
 
-- [ ] Manipulate a dataset of molecules using RDKit
-- [ ] Compute chemical descriptors and molecular fingerprints
-- [ ] Train a descriptor machine learning model using a common "reduce then fit" pattern
-- [ ] Train a fingerprint-based machine learning model using a KNN model.
+- [ ] 使用 RDKit 操作分子数据集
+- [ ] 计算化学描述符和分子指纹
+- [ ] 使用常见的“降维后拟合”模式训练描述符机器学习模型
+- [ ] 使用 KNN 模型训练基于指纹的机器学习模型
